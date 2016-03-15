@@ -1,41 +1,37 @@
 ﻿@model IEnumerable<ThingWall.Data.Model.Item>
-
 @{
     ViewBag.Title = "CurrentUserItems";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <h2>CurrentUserItems</h2>
+<div id="ItemsList" class="row">
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreateDate)
-        </th>
-        <th></th>
-    </tr>
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3" id="containerForItems">
+            <div class="row" id="titleRow">
+                @Html.DisplayFor(modelItem => item.Name)
+            </div>
+            <div class="row" id="containerForDescription">
+                @if (item.Description.Length< 300) { 
+                @Html.DisplayFor(modelItem => item.Description)
+                }
+                else
+                {
+                   <text> Text is to long, click Details to see text </text>
+                }
+            </div>
+            
+            <div class="row" id="itemFooter">
+                
+                    created at:
+                    @Html.DisplayFor(modelItem => item.CreateDate)
+               
+                    @Html.ActionLink("Details", "Details", "Items", new { id = item.ItemID}, new { @class = "btn btn-success" })
+                
+            </div>
+            
+        </div>
+    }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreateDate)
-        </td>
-    </tr>
-}
-
-</table>
+</div>

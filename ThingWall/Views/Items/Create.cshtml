@@ -3,21 +3,20 @@
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <h2>Create</h2>
 @using (Html.BeginForm())
 {
-<tr>
-    <td>
+    <div>
         @Html.LabelFor(x => x.Name, "Nazwa: ")
         @Html.TextBoxFor(x => x.Name)
         @Html.ValidationMessageFor(x => x.Name)
-    </td>
-    <td>
+    </div>
+    <div>
         @Html.LabelFor(x => x.Description, "Opis: ")
         @Html.TextBoxFor(x => x.Description)
         @Html.ValidationMessageFor(x => x.Description)
-    </td>
-</tr>
-    <input type="submit" value="Wyślij" />
+    </div>
+
+
+            <input type="submit" value="Wyślij" />
 }
