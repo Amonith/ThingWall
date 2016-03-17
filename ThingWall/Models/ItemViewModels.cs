@@ -17,4 +17,11 @@ namespace ThingWall.Models
         [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}")]
         public DateTime CreateDate { get; set; }
     }
+
+    public class CreateViewModel
+    {
+        public string Username { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+    }
 }

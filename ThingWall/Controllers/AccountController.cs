@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using ThingWall.Models;
 using ThingWall.Data.Model;
+using ThingWall.Data;
 
 namespace ThingWall.Controllers
 {
@@ -51,6 +52,18 @@ namespace ThingWall.Controllers
             {
                 _userManager = value;
             }
+        }
+
+        //
+        // GET: /Account/Index
+        [Authorize]
+        public ActionResult Index()
+        {
+            using (var ctx = new DataContext())
+            {
+                return View(ctx.Users.ToList());
+            }
+                
         }
 
         //

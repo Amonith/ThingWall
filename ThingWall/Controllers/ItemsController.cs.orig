@@ -7,6 +7,7 @@ using ThingWall.Data;
 using ThingWall.Data.Model;
 using ThingWall.Models;
 using Microsoft.AspNet.Identity;
+using System.Net;
 
 namespace ThingWall.Controllers
 {
@@ -18,22 +19,44 @@ namespace ThingWall.Controllers
             return View();
         }
         [Authorize]
-        public ActionResult Create()
+        public ActionResult Create(string id)
         {
-            return View();
+            using (var ctx = new DataContext())
+            {
+                
+                if (ctx.Users.Find(id) == null)
+                {
+                    id = User.Identity.GetUserId();
+                }
+                var user = ctx.Users.Find(id);
+                var model = new CreateViewModel();
+                model.Username = user.Email;
+
+                return View(model);
+            }
         }
         [HttpPost]
         [Authorize]
+<<<<<<< HEAD
         public ActionResult Create(ItemViewModels newItem, Guid? id)
+=======
+        public ActionResult Create(string id, ItemViewModels newItem)
+>>>>>>> master
         {
             if (ModelState.IsValid)
             {
                 using (var ctx = new DataContext())
                 {
+                    if (ctx.Users.Find(id) == null)
+                    {
+                        id = User.Identity.GetUserId();
+                    }
+
                     Item itemToDatabase = new Item();
                     itemToDatabase.Name = newItem.Name;
                     itemToDatabase.Description = newItem.Description;
                     itemToDatabase.CreateDate = DateTime.Now.Date;
+<<<<<<< HEAD
                     if (id.HasValue)
                     {
                         var target = ctx.UserFriends.Where(x => x.UserFriendID == id.Value).FirstOrDefault();
@@ -52,6 +75,9 @@ namespace ThingWall.Controllers
                     {
                         itemToDatabase.OwnerId = User.Identity.GetUserId();
                     }
+=======
+                    itemToDatabase.OwnerId = id;
+>>>>>>> master
 
                     itemToDatabase.AuthorID = User.Identity.GetUserId();
 
@@ -91,6 +117,7 @@ namespace ThingWall.Controllers
                 var ItemsList = ctx.Items.Where(x => x.OwnerId == UserID).ToList();
 
                 return View(ItemsList);
+<<<<<<< HEAD
             }
         }
         public ActionResult Details(int? id)
@@ -110,7 +137,10 @@ namespace ThingWall.Controllers
                     return HttpNotFound();
 
                 return View(items);
+=======
+>>>>>>> master
             }
         }
+
     }
 }

@@ -33,7 +33,7 @@ namespace ThingWall.Data.Migrations
             var userManager = new Microsoft.AspNet.Identity.UserManager<User>(new UserStore<User>(context));
 
             var testUser = userManager.FindByEmail("test@test.pl");
-            if(testUser == null)
+            if (testUser == null)
             {
                 var hasher = new PasswordHasher();
 
@@ -42,15 +42,16 @@ namespace ThingWall.Data.Migrations
                     UserName = "test",
                     Email = "test@test.pl",
                     EmailConfirmed = true,
-                    PasswordHash = hasher.HashPassword("test")
+                    PasswordHash = hasher.HashPassword("test"),
+                    Nick = "NowyNick"
                 };
 
                 userManager.Create(testUser);
             }
 
-            foreach(var example in examples)
+            foreach (var example in examples)
             {
-                if(!context.ExampleItems.Any(i => i.Name == example.Name))
+                if (!context.ExampleItems.Any(i => i.Name == example.Name))
                 {
                     //PROTIP: ustawianie klucza obcego wystarczy do "zrobienia" relacji
                     example.OwnerId = testUser.Id;
