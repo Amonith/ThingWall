@@ -10,6 +10,7 @@
     <div>
         @Html.DisplayFor(x => x.Recipient)
         @Html.EditorFor(x => x.Recipient)
+        @Html.ValidationMessageFor(x => x.Recipient)
     </div>
 
     <input type="submit" value="Wyślij" />

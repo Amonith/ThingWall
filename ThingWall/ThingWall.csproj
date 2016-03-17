@@ -266,6 +266,10 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Items\Create.cshtml" />
     <Content Include="Views\Items\CurrentUserItems.cshtml" />
+    <Content Include="Views\Friend\AddFriend.cshtml" />
+    <Content Include="Views\Friend\FriendsList.cshtml" />
+    <Content Include="Views\Friend\Invitations.cshtml" />
+    <Content Include="Views\Friend\SendInvitationList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

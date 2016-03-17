@@ -28,39 +28,41 @@ namespace ThingWall.Models
                 {
                     if (ctx.UserFriends.Where(x => x.User2 == User.Identity.Name).FirstOrDefault() != null)
                     {
-                        return RedirectToAction("FriendsList");
+                        ModelState.AddModelError("Recipient", "Jesteście już znajomymi");
                     }
                 }
                 else if (ctx.UserFriends.Where(x => x.User2 == invit.Recipient).FirstOrDefault() != null)
                 {
                     if (ctx.UserFriends.Where(x => x.User1 == User.Identity.Name).FirstOrDefault() != null)
                     {
-                        return RedirectToAction("FriendsList");
+                        ModelState.AddModelError("Recipient", "Jesteście już znajomymi");
                     }
                 }
                 if (invit.Recipient == User.Identity.Name)
                 {
-                    return RedirectToAction("FriendsList");
+                    ModelState.AddModelError("Recipient", "Nie można dodać samego siebie");
                 }
                 if (ctx.FriendInvitations.Where(x => x.Recipient == invit.Recipient && x.Sender == User.Identity.Name).FirstOrDefault() != null)
                 {
-                    return RedirectToAction("FriendsList");
+                    ModelState.AddModelError("Recipient", "Zaproszenie już istnieje");
                 }
                 if (ctx.Users.Where(x => x.UserName == invit.Recipient).FirstOrDefault() == null)
                 {
-                    return RedirectToAction("FriendsList");
+                    ModelState.AddModelError("Recipient", "Nie isnieje");
                 }
+                if (ModelState.IsValid)
+                {
+                    FriendInvitation FriendToDatabase = new FriendInvitation();
+                    FriendToDatabase.FriendInvitationID = Guid.NewGuid();
+                    FriendToDatabase.Sender = User.Identity.Name;
+                    FriendToDatabase.Recipient = invit.Recipient;
 
-                FriendInvitation FriendToDatabase = new FriendInvitation();
-                FriendToDatabase.FriendInvitationID = Guid.NewGuid();
-                FriendToDatabase.Sender = User.Identity.Name;
-                FriendToDatabase.Recipient = invit.Recipient;
-
-                ctx.FriendInvitations.Add(FriendToDatabase);
-                ctx.SaveChanges();
-
+                    ctx.FriendInvitations.Add(FriendToDatabase);
+                    ctx.SaveChanges();
+                }
             }
             return View();
+
         }
         [Authorize]
         public ActionResult SendInvitationList()
