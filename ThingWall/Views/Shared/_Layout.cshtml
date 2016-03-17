@@ -24,7 +24,10 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Create Item", "Create", "Items")</li>
                     <li>@Html.ActionLink("Items list", "CurrentUserItems", "Items")</li>
-                    <li>@Html.ActionLink("Users List", "UsersList", "Users")</li>
+                    <li>@Html.ActionLink("Friends List", "FriendsList", "Friend")</li>
+                    <li>@Html.ActionLink("Pending invitation", "Invitations", "Friend")</li>
+                    <li>@Html.ActionLink("Invitation to Friend", "SendInvitationList", "Friend")</li>
+                    <li>@Html.ActionLink("Create invitation", "AddFriend", "Friend")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

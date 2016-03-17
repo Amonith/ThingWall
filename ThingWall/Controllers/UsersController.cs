@@ -14,7 +14,7 @@ namespace ThingWall.Controllers
         {
             return View();
         }
-        public ActionResult UsersList()
+        public ActionResult FrinedsList()
         {
             using (var ctx = new DataContext())
             {

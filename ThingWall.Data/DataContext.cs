@@ -18,6 +18,8 @@ namespace ThingWall.Data
 
         public DbSet<ExampleItem> ExampleItems { get; set; }
         public DbSet<Item> Items { get; set; }
+        public DbSet<FriendInvitation> FriendInvitations { get; set; }
+        public DbSet<UserFriend> UserFriends { get; set; }
 
         //PROTIP: DefaultConnection to nazwa "connection string" w nadrzędnym Web.config projektu (ThingWall)
         //Przydatne w przypadku korzystania z kilku baz równocześnie (oddzielne DbContext, oddzielne connection stringi).

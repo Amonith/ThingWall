@@ -1,0 +1,34 @@
+﻿@model List<ThingWall.Data.Model.FriendInvitation>
+
+@{
+    ViewBag.Title = "Invitations";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Invitations</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            Invit from
+        </th>
+        <th>
+           Confim
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Sender)
+        </td>
+
+        <td>
+            @Html.ActionLink("Confim", "ConfimFreind", new { id=item.FriendInvitationID })
+        </td>
+    </tr>
+}
+
+</table>

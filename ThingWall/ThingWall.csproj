@@ -202,6 +202,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\FriendController.cs" />
     <Compile Include="Models\ItemViewModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -266,6 +267,10 @@
     <Content Include="Views\Items\Create.cshtml" />
     <Content Include="Views\Items\CurrentUserItems.cshtml" />
     <Content Include="Views\Users\UsersList.cshtml" />
+    <Content Include="Views\Friend\AddFriend.cshtml" />
+    <Content Include="Views\Friend\SendInvitationList.cshtml" />
+    <Content Include="Views\Friend\Invitations.cshtml" />
+    <Content Include="Views\Friend\FriendsList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

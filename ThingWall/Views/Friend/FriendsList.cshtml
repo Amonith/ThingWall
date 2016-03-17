@@ -1,0 +1,35 @@
+﻿@model IEnumerable<ThingWall.Data.Model.UserFriend>
+
+@{
+    ViewBag.Title = "FriendsList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>FriendsList</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Friend
+        </th>
+        <th>
+            Add Item
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.User2)
+        </td>
+        <td>
+            @Html.ActionLink("Add item for this user", "Create", "Items", new { id = item.UserFriendID }, null)
+            @Html.ActionLink("Show this user wall", "CurrentUserItems", "Items", new { id = item.UserFriendID }, null)
+        </td>
+    </tr>
+}
+
+</table>

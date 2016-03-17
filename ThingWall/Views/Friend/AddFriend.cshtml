@@ -1,0 +1,17 @@
+﻿@model ThingWall.Data.Model.FriendInvitation
+@{
+    ViewBag.Title = "AddFriend";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AddFriend</h2>
+@using (Html.BeginForm())
+{
+    <div>
+        @Html.DisplayFor(x => x.Recipient)
+        @Html.EditorFor(x => x.Recipient)
+    </div>
+
+    <input type="submit" value="Wyślij" />
+}
+

@@ -78,10 +78,28 @@
     <Compile Include="Migrations\201603081225087_userFix.Designer.cs">
       <DependentUpon>201603081225087_userFix.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603161819540_FriendList.cs" />
+    <Compile Include="Migrations\201603161819540_FriendList.Designer.cs">
+      <DependentUpon>201603161819540_FriendList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603161836059_changeInvit.cs" />
+    <Compile Include="Migrations\201603161836059_changeInvit.Designer.cs">
+      <DependentUpon>201603161836059_changeInvit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603170944460_fix.cs" />
+    <Compile Include="Migrations\201603170944460_fix.Designer.cs">
+      <DependentUpon>201603170944460_fix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603170946465_ChngeUserData.cs" />
+    <Compile Include="Migrations\201603170946465_ChngeUserData.Designer.cs">
+      <DependentUpon>201603170946465_ChngeUserData.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\ExampleItem.cs" />
+    <Compile Include="Model\FriendInvitation.cs" />
     <Compile Include="Model\Item.cs" />
     <Compile Include="Model\User.cs" />
+    <Compile Include="Model\UserFriend.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -106,6 +124,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603081225087_userFix.resx">
       <DependentUpon>201603081225087_userFix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603161819540_FriendList.resx">
+      <DependentUpon>201603161819540_FriendList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603161836059_changeInvit.resx">
+      <DependentUpon>201603161836059_changeInvit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603170944460_fix.resx">
+      <DependentUpon>201603170944460_fix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603170946465_ChngeUserData.resx">
+      <DependentUpon>201603170946465_ChngeUserData.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
