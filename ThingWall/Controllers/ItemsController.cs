@@ -18,23 +18,40 @@ namespace ThingWall.Controllers
             return View();
         }
         [Authorize]
-        public ActionResult Create()
+        public ActionResult Create(string id)
         {
-            return View();
+            using (var ctx = new DataContext())
+            {
+                
+                if (ctx.Users.Find(id) == null)
+                {
+                    id = User.Identity.GetUserId();
+                }
+                var user = ctx.Users.Find(id);
+                var model = new CreateViewModel();
+                model.Username = user.Email;
+
+                return View(model);
+            }
         }
         [HttpPost]
         [Authorize]
-        public ActionResult Create(ItemViewModels newItem)
+        public ActionResult Create(string id, ItemViewModels newItem)
         {
             if (ModelState.IsValid)
             {
                 using (var ctx = new DataContext())
                 {
+                    if (ctx.Users.Find(id) == null)
+                    {
+                        id = User.Identity.GetUserId();
+                    }
+
                     Item itemToDatabase = new Item();
                     itemToDatabase.Name = newItem.Name;
                     itemToDatabase.Description = newItem.Description;
                     itemToDatabase.CreateDate = DateTime.Now.Date;
-                    itemToDatabase.OwnerId = User.Identity.GetUserId();
+                    itemToDatabase.OwnerId = id;
 
 
                     ctx.Items.Add(itemToDatabase);
@@ -50,9 +67,10 @@ namespace ThingWall.Controllers
             {
                 string UserID = User.Identity.GetUserId();
                 var ItemsList = ctx.Items.Where(x => x.OwnerId == UserID).ToList();
-            
-            return View(ItemsList);
+
+                return View(ItemsList);
             }
         }
+
     }
 }
