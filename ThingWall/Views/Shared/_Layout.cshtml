@@ -23,13 +23,11 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    @if (Request.IsAuthenticated)
-                    {
-                        <li>@Html.ActionLink("Users", "Index", "Account")</li>
-                    }
+                    <li>@Html.ActionLink("Friends List", "FriendsList", "Friend")</li>
+                    <li>@Html.ActionLink("Pending invitation", "Invitations", "Friend")</li>
+                    <li>@Html.ActionLink("Invitation to Friend", "SendInvitationList", "Friend")</li>
+                    <li>@Html.ActionLink("Create invitation", "AddFriend", "Friend")</li>
+                    <li>@Html.ActionLink("My Wall", "CurrentUserItems", "Items")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

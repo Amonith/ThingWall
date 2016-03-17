@@ -7,6 +7,7 @@ using ThingWall.Data;
 using ThingWall.Data.Model;
 using ThingWall.Models;
 using Microsoft.AspNet.Identity;
+using System.Net;
 
 namespace ThingWall.Controllers
 {

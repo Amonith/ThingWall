@@ -71,6 +71,7 @@ namespace ThingWall.Models
                 return View(invits);
             }
         }
+        [Authorize]
         public ActionResult Invitations()
         {
             using (var ctx = new DataContext())
@@ -79,6 +80,7 @@ namespace ThingWall.Models
                 return View(invits);
             }
         }
+        [Authorize]
         public ActionResult ConfimFreind(Guid? id)
         {
 
@@ -100,6 +102,7 @@ namespace ThingWall.Models
 
             return View();
         }
+        [Authorize]
         public ActionResult FriendsList()
         {
             using (var ctx = new DataContext())
