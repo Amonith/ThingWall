@@ -1,0 +1,27 @@
+﻿@model List<ThingWall.Data.Model.FriendInvitation>
+
+@{
+    ViewBag.Title = "SendInvitationList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>SendInvitationList</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            Unconfim Invit        
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Recipient)
+        </td>
+
+    </tr>
+}
+
+</table>

@@ -14,7 +14,11 @@ namespace ThingWall.Data.Model
         public string Name { get; set; }
         [Required]
         public string OwnerId { get; set; }
+        [Required]
+        public string AuthorID { get; set; }
+        [DataType(DataType.MultilineText)]
         public string Description { get; set; }
+        [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}")]
         public DateTime CreateDate { get; set; }
         public virtual User Owner { get; set; }
     }

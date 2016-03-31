@@ -266,10 +266,15 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Items\Create.cshtml" />
     <Content Include="Views\Items\CurrentUserItems.cshtml" />
+<<<<<<< HEAD
+    <Content Include="Views\Users\UsersList.cshtml" />
     <Content Include="Views\Friend\AddFriend.cshtml" />
-    <Content Include="Views\Friend\FriendsList.cshtml" />
-    <Content Include="Views\Friend\Invitations.cshtml" />
     <Content Include="Views\Friend\SendInvitationList.cshtml" />
+    <Content Include="Views\Friend\Invitations.cshtml" />
+    <Content Include="Views\Friend\FriendsList.cshtml" />
+=======
+    <Content Include="Views\Account\Index.cshtml" />
+>>>>>>> master
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

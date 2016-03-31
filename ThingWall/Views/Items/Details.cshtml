@@ -1,0 +1,22 @@
+﻿@model ThingWall.Models.ItemViewModels
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+<div class="row">
+    <div>
+        @Html.NameFor(x => x.Name)
+        @Html.DisplayFor(x => x.Name)
+    </div>
+    <div>
+        @Html.NameFor(x => x.Description)
+        @Html.DisplayFor(x => x.Description)
+    </div>
+    <div>
+        @Html.NameFor(x => x.CreateDate)
+        @Html.DisplayFor(x => x.CreateDate)
+    </div>
+
+</div>
