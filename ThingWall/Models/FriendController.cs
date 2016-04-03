@@ -109,7 +109,7 @@ namespace ThingWall.Models
         {
             using (var ctx = new DataContext())
             {
-                var friendList = ctx.UserFriends.Where(x => x.User1 == User.Identity.Name).ToList();
+                var friendList = ctx.UserFriends.Where(x => (x.User1 == User.Identity.Name)|| (x.User2 == User.Identity.Name)).ToList();
                 return View(friendList);
             }
         }
