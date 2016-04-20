@@ -67,32 +67,67 @@ namespace ThingWall.Controllers
         [Authorize]
         public ActionResult CurrentUserItems(Guid? id)
         {
-            using (var ctx = new DataContext())
+            return View();
+        }
+        [HttpGet]
+        public JsonResult CurrentUserItemsAjax(Guid? id)
+        {
+            var ctx = new DataContext();
+            if (id.HasValue)
             {
-                if (id.HasValue)
+                var user = ctx.UserFriends.Find(id);
+
+                if (user.User1 == User.Identity.Name)
                 {
-                    var user = ctx.UserFriends.Find(id);
-                    
-                    if (user.User1 == User.Identity.Name)
+                    var userid = ctx.Users.Where(x => x.UserName == user.User2).FirstOrDefault();
+                    var ItemsList1 = ctx.Items.Where(x => x.OwnerId == userid.Id).ToList();
+
+                    var newList1 = ItemsList1.Select(i => new ItemDTO
                     {
-                        var userid = ctx.Users.Where(x => x.UserName == user.User2).FirstOrDefault();
-                        var ItemsList1 = ctx.Items.Where(x => x.OwnerId == userid.Id).ToList();
-                        return View(ItemsList1);
-                    }
-                    else
-                    {
-                        var userid = ctx.Users.Where(x => x.UserName == user.User2).FirstOrDefault();
-                        var ItemsList1 = ctx.Items.Where(x => x.OwnerId == userid.Id).ToList();
-                        return View(ItemsList1);
-                    }
+                        Date = i.CreateDate.ToShortDateString(),
+                        Description = i.Description,
+                        ItemID = i.ItemID,
+                        Name = i.Name
+
+                    }).ToList();
+
+                    return Json(newList1, JsonRequestBehavior.AllowGet);
                 }
+                else
+                {
+                    var userid = ctx.Users.Where(x => x.UserName == user.User2).FirstOrDefault();
+                    var ItemsList1 = ctx.Items.Where(x => x.OwnerId == userid.Id).ToList();
 
+                    var newList1 = ItemsList1.Select(i => new ItemDTO
+                    {
+                        Date = i.CreateDate.ToShortDateString(),
+                        Description = i.Description,
+                        ItemID = i.ItemID,
+                        Name = i.Name
 
-                string UserID = User.Identity.GetUserId();
-                var ItemsList = ctx.Items.Where(x => x.OwnerId == UserID).ToList();
+                    }).ToList();
 
-                return View(ItemsList);
+                    return Json(ItemsList1, JsonRequestBehavior.AllowGet);
+                }
             }
+
+
+
+            string UserID = User.Identity.GetUserId();
+            var ItemsList = ctx.Items.Where(x => x.OwnerId == UserID).ToList();
+
+            var newList = ItemsList.Select(i => new ItemDTO
+            {
+                Date = i.CreateDate.ToShortDateString(),
+                Description = i.Description,
+                ItemID = i.ItemID,
+                Name = i.Name
+
+            }).ToList();
+
+
+            return Json(newList, JsonRequestBehavior.AllowGet);
+
         }
         public ActionResult Details(int? id)
         {
@@ -115,3 +150,5 @@ namespace ThingWall.Controllers
         }
     }
 }
+
+

@@ -7,13 +7,13 @@ namespace ThingWall.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class changeInvit : IMigrationMetadata
+    public sealed partial class ErrorMigration : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(changeInvit));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ErrorMigration));
         
         string IMigrationMetadata.Id
         {
-            get { return "201603161836059_changeInvit"; }
+            get { return "201604201137182_ErrorMigration"; }
         }
         
         string IMigrationMetadata.Source
