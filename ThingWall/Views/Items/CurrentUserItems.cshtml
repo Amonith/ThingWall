@@ -11,6 +11,23 @@
 @section Scripts{
     <script>
         $(document).ready(function () {
+            $.ajax({
+                url: "@Url.Action("CurrentUserItemsAjax","Items")",
+                data: "",
+            type: "GET",
+            cache: false,
+            dataType: "json",
+            success: function (data) {
+
+                loadData(data);
+            },
+            error: function () {
+                alert("Błąd! Try again!");
+
+            }
+
+        });
+        
             timeout();
 
             function timeout() {
@@ -31,7 +48,6 @@
                         }
 
                     });
-                    var getdata = new Date().getTime();
                     timeout();
                 }, 1000);
             }

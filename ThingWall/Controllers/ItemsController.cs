@@ -60,6 +60,8 @@ namespace ThingWall.Controllers
                     ctx.SaveChanges();
                     if (!id.HasValue)
                         return RedirectToAction("CurrentUserItems");
+                    else
+                        return RedirectToAction("FriendsList", "Friend");
                 }
             }
             return View();
@@ -67,11 +69,29 @@ namespace ThingWall.Controllers
         [Authorize]
         public ActionResult CurrentUserItems(Guid? id)
         {
+            if (id.HasValue)
+            {
+                Session["id"] = id.Value;
+            }
+            else
+            {
+                Session["id"] = null;
+            }
+
             return View();
         }
         [HttpGet]
-        public JsonResult CurrentUserItemsAjax(Guid? id)
+        public JsonResult CurrentUserItemsAjax()
         {
+            Guid? id;
+            if (Session["id"] != null)
+            {
+                id = Guid.Parse(Session["id"].ToString());
+            } else
+            {
+                id = null;
+            }
+            
             var ctx = new DataContext();
             if (id.HasValue)
             {
