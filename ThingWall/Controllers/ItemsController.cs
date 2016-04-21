@@ -115,7 +115,7 @@ namespace ThingWall.Controllers
                 }
                 else
                 {
-                    var userid = ctx.Users.Where(x => x.UserName == user.User2).FirstOrDefault();
+                    var userid = ctx.Users.Where(x => x.UserName == user.User1).FirstOrDefault();
                     var ItemsList1 = ctx.Items.Where(x => x.OwnerId == userid.Id).ToList();
 
                     var newList1 = ItemsList1.Select(i => new ItemDTO

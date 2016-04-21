@@ -18,16 +18,24 @@
         </th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.User2)
-        </td>
-        <td>
-            @Html.ActionLink("Add item for this user", "Create", "Items", new { id = item.UserFriendID }, null)
-            @Html.ActionLink("Show this user wall", "CurrentUserItems", "Items", new { id = item.UserFriendID }, null)
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @if (item.User1 == User.Identity.Name)
+                {
+                    @Html.DisplayFor(modelItem => item.User2)
+                }
+                else
+                {
+                    @Html.DisplayFor(modelItem => item.User1)
+                }
+            </td>
+            <td>
+                @Html.ActionLink("Add item for this user", "Create", "Items", new { id = item.UserFriendID }, null)
+                @Html.ActionLink("Show this user wall", "CurrentUserItems", "Items", new { id = item.UserFriendID }, null)
+            </td>
+        </tr>
+    }
 
 </table>
