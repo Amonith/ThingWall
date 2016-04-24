@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ThingWall.Hubs;
 
 namespace ThingWall.Controllers
 {
@@ -16,6 +17,8 @@ namespace ThingWall.Controllers
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
+
+            NotificationsHub.NotifyConnected("Jakiś gość wszedł w About :D");
 
             return View();
         }

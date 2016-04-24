@@ -9,6 +9,9 @@ namespace ThingWall
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
+
+            //PROTIP: podpięcie SignalR
+            app.MapSignalR();
         }
     }
 }

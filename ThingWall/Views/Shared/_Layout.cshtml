@@ -8,7 +8,6 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -43,7 +42,46 @@
     </div>
 
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/toastr")
     @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/signalr/hubs"></script>
     @RenderSection("scripts", required: false)
+    <script>
+
+        $(function () {
+            toastr.options = {
+                "closeButton": true,
+                "debug": false,
+                "newestOnTop": true,
+                "progressBar": false,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": true,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "0",
+                "extendedTimeOut": "0",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
+
+            var notifications = $.connection.notificationsHub;
+            //PROTIP: funkcja wywoływana z serwera w np. NotifyConnected()
+            notifications.client.addMessage = function (message, targetUrl) {
+                toastr["info"](message, '', {
+                    onclick: function () {
+                        notifications.server.notifyAll("Ktoś kliknął w info, że ktoś wszedł w About :D", "#");
+                    }
+                });
+            };
+
+            $.connection.hub.start().done(function () {
+                //PROTIP: od teraz można wywoływać funkcje na serwerze
+            });
+        })
+
+    </script>
 </body>
 </html>
