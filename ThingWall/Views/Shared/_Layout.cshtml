@@ -27,7 +27,8 @@
                     <li>@Html.ActionLink("Pending invitation", "Invitations", "Friend")</li>
                     <li>@Html.ActionLink("Invitation to Friend", "SendInvitationList", "Friend")</li>
                     <li>@Html.ActionLink("Create invitation", "AddFriend", "Friend")</li>
-                    <li>@Html.ActionLink("My Wall", "CurrentUserItems", "Items")</li>
+                    <li>@Html.ActionLink("My Wall", "CurrentUserItems", "Items",new { id = "" }, null)</li>
+                    <li>@Html.ActionLink("Create Item", "Create", "Items")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

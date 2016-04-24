@@ -6,32 +6,85 @@
 <h2>CurrentUserItems</h2>
 <div id="ItemsList" class="row">
 
-    @foreach (var item in Model)
-    {
-        <div class="col-md-3" id="containerForItems">
-            <div class="row" id="titleRow">
-                @Html.DisplayFor(modelItem => item.Name)
-            </div>
-            <div class="row" id="containerForDescription">
-                @if (item.Description.Length< 300) { 
-                @Html.DisplayFor(modelItem => item.Description)
-                }
-                else
-                {
-                   <text> Text is to long, click Details to see text </text>
-                }
-            </div>
-            
-            <div class="row" id="itemFooter">
-                
-                    created at:
-                    @Html.DisplayFor(modelItem => item.CreateDate)
-               
-                    @Html.ActionLink("Details", "Details", "Items", new { id = item.ItemID}, new { @class = "btn btn-success" })
-                
-            </div>
-            
-        </div>
-    }
-
+    <div id="UpdatePanel"></div>
 </div>
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: "@Url.Action("CurrentUserItemsAjax","Items")",
+                data: "",
+            type: "GET",
+            cache: false,
+            dataType: "json",
+            success: function (data) {
+
+                loadData(data);
+            },
+            error: function () {
+                alert("Błąd! Try again!");
+
+            }
+
+        });
+        
+            timeout();
+
+            function timeout() {
+                setTimeout(function () {
+                    $.ajax({
+                        url: "@Url.Action("CurrentUserItemsAjax","Items")",
+                        data: "",
+                        type: "GET",
+                        cache: false,
+                        dataType: "json",
+                        success: function (data) {
+
+                            loadData(data);
+                        },
+                        error: function () {
+                            alert("Błąd! Try again!");
+
+                        }
+
+                    });
+                    timeout();
+                }, 1000);
+            }
+
+            function loadData(data) {
+
+                var divParent = $('<div  </div>');
+
+
+                $.each(data, function (i, val) {
+
+                    var div = $('<div class="col-md-3" id="containerForItems"> </div>');
+                    var title = $('<div class="row" id="titleRow"></div>');
+
+                    var description = $('<div class="row" id="containerForDescription"> </div>');
+                    var footer = $('<div class="row" id="itemFooter"> </div>');
+
+                    if (val.Description.length < 300) {
+                        description.append(val.Description);
+                    } else {
+                        description.append("Text is to long, click Details to see text");
+                    }
+
+                    footer.append('created at:');
+                    footer.append(val.Date);
+                    footer.append('<a class="btn btn-success" href="/Items/Details/' + val.ItemID + '">Details</a>')
+                    title.append(val.Name);
+                    div.append(title);
+                    div.append(description);
+                    div.append(footer);
+                    divParent.append(div);
+
+                });
+                $("#UpdatePanel").html(divParent);
+
+            };
+        });
+
+    </script>
+}
