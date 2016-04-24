@@ -35,15 +35,13 @@ namespace ThingWall.Data.Migrations
             var testUser = userManager.FindByEmail("test@test.pl");
             if (testUser == null)
             {
-                var hasher = new PasswordHasher();
-
                 testUser = new User()
                 {
                     UserName = "test",
                     Email = "test@test.pl",
                     EmailConfirmed = true,
-                    PasswordHash = hasher.HashPassword("test"),
-                    Nick = "NowyNick"
+                    PasswordHash = userManager.PasswordHasher.HashPassword("test"),
+                    Nick = "Test"
                 };
 
                 userManager.Create(testUser);

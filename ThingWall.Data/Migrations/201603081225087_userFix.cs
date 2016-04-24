@@ -7,7 +7,8 @@ namespace ThingWall.Data.Migrations
     {
         public override void Up()
         {
-            AlterColumn("dbo.AspNetUsers", "Nick", c => c.String(nullable: false));
+            Sql("UPDATE dbo.AspNetUsers SET Nick = 'Anonymous' WHERE Nick IS NULL");
+            AlterColumn("dbo.AspNetUsers", "Nick", c => c.String(nullable: false, defaultValueSql: "'Anonymous'"));
         }
         
         public override void Down()
