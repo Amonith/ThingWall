@@ -21,6 +21,9 @@ namespace ThingWall
             // Manually installed WebAPI 2.2 after making an MVC project.
             GlobalConfiguration.Configure(WebApiConfig.Register);
 
+            //PROTIP: konfiguracja kontenera DI
+            DependencyInjectionConfig.Configure();
+
             //PROTIP: podpięcie AutoMappera na zasadzie wyszukiwania klas dziedziczących po Profile
             Mapper.Initialize(cfg =>
             {
