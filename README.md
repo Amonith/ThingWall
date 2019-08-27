@@ -1,8 +1,11 @@
+> Ten projekt byÅ‚ uÅ¼ywany jako przykÅ‚adowa aplikacja na potrzeby organizowanego przeze mnie kursu C# na Politechnice Rzeszowskiej w roku 2016. Reprezentuje podstawowÄ… aplikacjÄ™ MVC wraz z prezentacjÄ… dziaÅ‚ania notyfikacji push zaimplementowanych przez SignalR.
+> Repozytorium nie zawiera praktyk stosowanych w rzeczywistych, duÅ¼ych aplikacjach komercyjnych, ani Å¼adnych zÅ‚oÅ¼onych funkcjonalnoÅ›ci. Jego uÅ¼ytecznoÅ›Ä‡ poza w/w kursem jest znikoma, dlatego zdecydowaÅ‚em siÄ™ go zarchiwizowaÄ‡.
+
 # ThingWall
 Projekt-demo na potrzeby kursu C#.
 
-Za pomoc¹ CTRL+Shift+F w VS znajdŸ frazê "PROTIP" w projekcie, ¿eby znaleŸæ garœæ przydatnych wskazówek i przyk³adów.
+Za pomocÄ… CTRL+Shift+F w VS znajdÅº frazÄ™ "PROTIP" w projekcie, Å¼eby znaleÅºÄ‡ garÅ›Ä‡ przydatnych wskazÃ³wek i przykÅ‚adÃ³w.
 
-Czêœæ informacji bêdzie te¿ pojawiaæ siê na powi¹zanym z projektem Wiki.
+CzÄ™Å›Ä‡ informacji bÄ™dzie teÅ¼ pojawiaÄ‡ siÄ™ na powiÄ…zanym z projektem Wiki.
 
-Nie wahaj siê pytaæ w razie w¹tpliwoœci :)
+Nie wahaj siÄ™ pytaÄ‡ w razie wÄ…tpliwoÅ›ci :)
